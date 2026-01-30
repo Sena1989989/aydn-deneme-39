@@ -112,9 +112,19 @@ class _AnimalShadowGameState extends State<AnimalShadowGame> with TickerProvider
 
   Future<void> playAnimalSound(String soundFile) async {
     try {
+      // Arka plan müziğini kıs
+      await backgroundMusicPlayer.setVolume(0.1);
+      
       await audioPlayer.play(AssetSource('sounds/$soundFile'));
+      
+      // Hayvan sesi bittiğinde arka plan müziğini yükselt
+      audioPlayer.onPlayerComplete.listen((event) {
+        backgroundMusicPlayer.setVolume(0.3);
+      });
     } catch (e) {
       print('Ses çalma hatası: $e');
+      // Hata durumunda da müziği normale döndür
+      backgroundMusicPlayer.setVolume(0.3);
     }
   }
 

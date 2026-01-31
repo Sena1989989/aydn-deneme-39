@@ -718,6 +718,43 @@ class _AnimalShadowGameState extends State<AnimalShadowGame> with TickerProvider
           ),
           backgroundColor: Colors.purple.shade300,
           centerTitle: true,
+          actions: [
+            PopupMenuButton<AppLanguage>(
+              icon: const Icon(Icons.language, size: 30),
+              tooltip: 'Dil Seçin / Select Language',
+              onSelected: (AppLanguage lang) {
+                setState(() {
+                  currentLanguage = lang;
+                });
+              },
+              itemBuilder: (BuildContext context) {
+                return AppLanguage.values.map((lang) {
+                  return PopupMenuItem<AppLanguage>(
+                    value: lang,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(lang.flag, style: const TextStyle(fontSize: 24)),
+                        const SizedBox(width: 10),
+                        Text(
+                          lang.name,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: currentLanguage == lang
+                                ? FontWeight.bold
+                                : FontWeight.normal,
+                            color: currentLanguage == lang
+                                ? Colors.purple
+                                : Colors.black87,
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                }).toList();
+              },
+            ),
+          ],
         ),
         body: AnimatedBuilder(
           animation: _gradientAnimation,
@@ -841,6 +878,43 @@ class _AnimalShadowGameState extends State<AnimalShadowGame> with TickerProvider
         ),
         backgroundColor: Colors.purple.shade300,
         centerTitle: true,
+        actions: [
+          PopupMenuButton<AppLanguage>(
+            icon: const Icon(Icons.language, size: 30),
+            tooltip: 'Dil Seçin / Select Language',
+            onSelected: (AppLanguage lang) {
+              setState(() {
+                currentLanguage = lang;
+              });
+            },
+            itemBuilder: (BuildContext context) {
+              return AppLanguage.values.map((lang) {
+                return PopupMenuItem<AppLanguage>(
+                  value: lang,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(lang.flag, style: const TextStyle(fontSize: 24)),
+                      const SizedBox(width: 10),
+                      Text(
+                        lang.name,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: currentLanguage == lang
+                              ? FontWeight.bold
+                              : FontWeight.normal,
+                          color: currentLanguage == lang
+                              ? Colors.purple
+                              : Colors.black87,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }).toList();
+            },
+          ),
+        ],
       ),
       body: AnimatedBuilder(
         animation: _gradientAnimation,

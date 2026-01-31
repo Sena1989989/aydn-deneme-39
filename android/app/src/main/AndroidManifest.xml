@@ -1,6 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Internet izni ses dosyalar\u0131 i\u00e7in -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    
     <application
-        android:label="hayvan_golgeleri_app"
+        android:label="Hayvan E\u015fle\u015ftirme Oyunu"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
